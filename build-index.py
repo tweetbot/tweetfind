@@ -23,29 +23,6 @@ TWEETSPATH = os.path.expanduser(parsed_args.tweetspath)
 INDEXPATH = os.path.normpath(INDEXPATH) + os.sep
 TWEETSPATH = os.path.normpath(TWEETSPATH) + os.sep
 
-if not os.path.isdir(TWEETSPATH):
-    print "Tweets Directory does not exist"
-    exit()
-
-# Remove the folder if it exists
-if os.path.isdir(INDEXPATH):
-    print "Index Directory exists. Ateempting to delete existing directory"
-    try:
-        shutil.rmtree(INDEXPATH)
-    except shutil.ERROR, (error, message):
-        print "Error deleting old directory. Exiting"
-        exit()
-
-print "Attempting to create a directory"
-try:
-    os.makedirs(INDEXPATH)
-    print "Directory successfully created."
-except OSError, (error, message):
-    print "Error creating a directory at the specified path"
-    exit()
-
-print "Index path",INDEXPATH
-print "Tweets path",TWEETSPATH
 
 from java.io import File
 from org.apache.lucene.analysis.standard import StandardAnalyzer
@@ -55,6 +32,31 @@ from org.apache.lucene.store import SimpleFSDirectory
 from org.apache.lucene.util import Version
 
 if __name__ == "__main__":
+
+    if not os.path.isdir(TWEETSPATH):
+        print "Tweets Directory does not exist"
+        exit()
+
+    # Remove the folder if it exists
+    if os.path.isdir(INDEXPATH):
+        print "Index Directory exists. Ateempting to delete existing directory"
+        try:
+            shutil.rmtree(INDEXPATH)
+        except shutil.ERROR, (error, message):
+            print "Error deleting old directory. Exiting"
+            exit()
+
+    print "Attempting to create a directory"
+    try:
+        os.makedirs(INDEXPATH)
+        print "Directory successfully created."
+    except OSError, (error, message):
+        print "Error creating a directory at the specified path"
+        exit()
+
+    print "Index path",INDEXPATH
+    print "Tweets path",TWEETSPATH
+
     lucene.initVM()
     indexDir = SimpleFSDirectory(File(INDEXPATH))
     writerConfig = IndexWriterConfig(Version.LUCENE_4_10_1, StandardAnalyzer())
