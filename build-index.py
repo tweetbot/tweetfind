@@ -87,8 +87,8 @@ while(os.path.exists(filepath)):
                         if(u'full_name' in jsontweet[u'place'].keys()):
                             if jsontweet[u'place'][u'full_name']!=None:
                                 doc.add(Field("place", jsontweet[u'place'][u'full_name'], Field.Store.YES, Field.Index.ANALYZED))
-                                doc.add(Field("lat", str(jsontweet[u'place'][u'bounding_box'][u'coordinates'][0][0][0]),Field.Store.YES,Field.Index.NO))
-                                doc.add(Field("lng", str(jsontweet[u'place'][u'bounding_box'][u'coordinates'][0][0][1]),Field.Store.YES,Field.Index.NO))
+                                doc.add(Field("lat", str(jsontweet[u'place'][u'bounding_box'][u'coordinates'][0][0][1]),Field.Store.YES,Field.Index.NO))
+                                doc.add(Field("lng", str(jsontweet[u'place'][u'bounding_box'][u'coordinates'][0][0][0]),Field.Store.YES,Field.Index.NO))
                                 numlines+=1
                                 writer.addDocument(doc)
             except AttributeError:

@@ -9,7 +9,7 @@ from org.apache.lucene.queryparser.classic import QueryParser
 from org.apache.lucene.store import SimpleFSDirectory
 from org.apache.lucene.util import Version
 
-INDEXPATH="/Users/hundal/tweetfind/index/"
+INDEXPATH="index/"
 
 def search(query,max):
     lucene.initVM()
@@ -32,8 +32,8 @@ def search(query,max):
         cur['lat']=doc.get("lat")
         cur['lng']=doc.get("lng")
         results.append(cur)
-    
+
     return results
-       
+
 if __name__=="__main__":
     print search("Black Friday", 10)
