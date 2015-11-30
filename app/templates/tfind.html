@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="../static/css/main.css" rel="stylesheet" type="text/css">
+    <title>Welcome to TweetFind</title>
+  </head>
+  <body>
+      <div class="center">
+        <h2>TweetFind</h1>
+        <!-- Simple Textfield -->
+        <form action="/" method="get">
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" type="text" id="sample1" name="q">
+            <label class="mdl-textfield__label" for="sample1">Search</label>
+          </div>
+          <!-- Accent-colored raised button with ripple -->
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+            TweetFind
+          </button>
+        </form>
+       </div>
+       
+       <div class="mdl-grid">
+         <div class="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet">
+            {% for result in results %}
+              <div><p><b>{{ result.name }}</b>: {{ result.text }}</p></div>
+            {% endfor %}
+          </div>
+       </div>
+    </body>
+</html>
