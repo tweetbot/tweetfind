@@ -93,7 +93,8 @@ while(os.path.exists(filepath)):
                                 writer.addDocument(doc)
             except AttributeError:
                 print line
-                exit()
+            except TypeError:
+                print line
 
     fileno+=1
     filepath=TWEETSPATH+"twitter_store"+str(fileno)+".txt"
