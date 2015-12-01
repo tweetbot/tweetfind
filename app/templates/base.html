@@ -21,6 +21,9 @@
             TweetFind
           </button>
         </form>
+            {% if error %}
+                <h2>{{ error }}</h2>
+            {% endif %}
        </div>
         {% block content %}{% endblock %}
     </body>

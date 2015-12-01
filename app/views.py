@@ -17,5 +17,5 @@ def index():
             else:
                 return render_template('tfind.html',results=results)
         else:
-            return render_template('base.html')
+            return render_template('base.html', error="Please Input a query")
     return render_template('base.html')
