@@ -2,3 +2,4 @@ tweets/
 index/
 *.pyc
 tweets_old
+*.pdf
